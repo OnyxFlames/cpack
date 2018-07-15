@@ -33,6 +33,8 @@ std::string Language::operator[](LanguageSection sect)
 		return storagetype;
 	case CastType:
 		return casttype;
+	case StringType:
+		return stringtype;
 	case CommentStart:
 		return comment_start;
 	case CommentEnd:
@@ -58,18 +60,20 @@ bool Language::set_language(LanguageName lang)
 		body = "";
 		footer = "\n\n#endif";
 		storagetype = "char ";
-		casttype = "char";
+		casttype = "(char)";
 		comment_start = "/*";
 		comment_end = "*/";
+		stringtype = "char[] ";
 		break;
 	case CSharp:
-		header = "namespace " + header_name + "\n{\n\t";
+		header = "namespace " + header_name + "\n{\nclass Storage\n{\n";
 		body = "";
-		footer = "}\n";
-		storagetype = "static char[] ";
+		footer = "}\n}\n";
+		storagetype = "public static fixed char[] ";
 		casttype = "";
 		comment_start = "/*";
 		comment_end = "*/";
+		stringtype = "string ";
 		break;
 	default:
 		std::cout << "Language not supported.\n";

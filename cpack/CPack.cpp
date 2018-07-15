@@ -60,8 +60,8 @@ std::string CPack::bytes_to_source(File_Struct& file)
 
 	std::stringstream ret;
 
-	ret << lang[StorageType] << filename_to_sourcename(file.filename) << "_name[] = \"" << fs::path(file.filename).filename().string() << "\";\n";
-	ret << lang[StorageType] << filename_to_sourcename(file.filename) << "_contents[" << file.contents.size() << "] = \n{";
+	ret << lang[StringType] << filename_to_sourcename(file.filename) << "_name = \"" << fs::path(file.filename).filename().string() << "\";\n";
+	ret << lang[StorageType] << filename_to_sourcename(file.filename) << "_contents" << file.contents.size() << " = \n{";
 
 	for (size_t i = 0; i < file.contents.size(); i++)
 	{
@@ -70,7 +70,7 @@ std::string CPack::bytes_to_source(File_Struct& file)
 				ret << "\n" << lang[CommentStart] << std::setw(8) << std::setfill('0') << std::hex << i << lang[CommentEnd];
 			else
 				ret << "\n";
-		ret << "\t(" + lang[CastType] + ")0x" << std::hex << std::setw(2) << std::setfill('0') << ((unsigned)file.contents[i] & 0x000000FF);
+		ret << "\t" + lang[CastType] + "0x" << std::hex << std::setw(2) << std::setfill('0') << ((unsigned)file.contents[i] & 0x000000FF);
 		
 		if (i + 1 != file.contents.size())
 			 ret << ", ";
