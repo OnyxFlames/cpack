@@ -57,13 +57,6 @@ bool Language::set_language(LanguageName lang)
 		footer = "UnknownLangageFooter";
 		break;
 	case C:
-		header = "#ifndef " + header_name + "\n#define " + header_name + " \n";
-		body = "";
-		footer = "\n\n#endif";
-		storagetype = "char ";
-		comment_start = "/*";
-		comment_end = "*/";
-		break;
 	case CPP:
 		header = "#ifndef " + header_name + "\n#define " + header_name + " \n";
 		body = "";

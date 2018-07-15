@@ -48,7 +48,7 @@ std::string filename_to_sourcename(std::string str)
 	{
 		if (str[i] == '.')
 			str[i] = '_';
-		if (str[i] == '/' || str[i] == '\\')
+		if (str[i] == '/' || str[i] == '\\' || str[i] == ':')
 			str.erase(i);
 	}
 	return str;
