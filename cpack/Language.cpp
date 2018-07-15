@@ -25,22 +25,18 @@ std::string Language::operator[](LanguageSection sect)
 	{
 	case Header:
 		return header;
-		break;
 	case Body:
 		return body;
-		break;
 	case Footer:
 		return footer;
-		break;
 	case StorageType:
 		return storagetype;
-		break;
+	case CastType:
+		return casttype;
 	case CommentStart:
 		return comment_start;
-		break;
 	case CommentEnd:
 		return comment_end;
-		break;
 	default:
 		return "Unknown";
 	}
@@ -62,6 +58,16 @@ bool Language::set_language(LanguageName lang)
 		body = "";
 		footer = "\n\n#endif";
 		storagetype = "char ";
+		casttype = "char";
+		comment_start = "/*";
+		comment_end = "*/";
+		break;
+	case CSharp:
+		header = "namespace " + header_name + "\n{\n\t";
+		body = "";
+		footer = "}\n";
+		storagetype = "static char[] ";
+		casttype = "";
 		comment_start = "/*";
 		comment_end = "*/";
 		break;

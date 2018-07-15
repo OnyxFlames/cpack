@@ -70,7 +70,7 @@ std::string CPack::bytes_to_source(File_Struct& file)
 				ret << "\n" << lang[CommentStart] << std::setw(8) << std::setfill('0') << std::hex << i << lang[CommentEnd];
 			else
 				ret << "\n";
-		ret << "\t(" + lang[StorageType] + ")0x" << std::hex << std::setw(2) << std::setfill('0') << ((unsigned)file.contents[i] & 0x000000FF);
+		ret << "\t(" + lang[CastType] + ")0x" << std::hex << std::setw(2) << std::setfill('0') << ((unsigned)file.contents[i] & 0x000000FF);
 		
 		if (i + 1 != file.contents.size())
 			 ret << ", ";

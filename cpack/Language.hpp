@@ -22,6 +22,7 @@ enum LanguageSection
 	Body,
 	Footer,
 	StorageType,
+	CastType,
 	CommentStart,
 	CommentEnd,
 };
@@ -43,6 +44,7 @@ private:
 	std::string body = "";
 	std::string footer = "";
 	std::string storagetype = "";
+	std::string casttype = "";
 	std::string comment_start, comment_end;
 	LanguageName current_language = UnknownName;
 public:
