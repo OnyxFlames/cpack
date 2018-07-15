@@ -31,7 +31,7 @@ static std::map<std::string, LanguageName> to_language
 	{ "c", C },
 	{ "cpp", CPP },
 	{ "java", Java },
-	{ "c#", CSharp},
+	{ "cs", CSharp},
 };
 
 class Language
