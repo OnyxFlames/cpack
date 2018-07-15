@@ -31,8 +31,6 @@ int main(int argc, char* argv[])
 			}
 			else if (std::string(argv[i]) == "-h" && i < argc)
 			{
-				//std::cout << "[" << i << "] setting header value: " << argv[i + 1] << "\n";
-				//cpack.set_header_name(argv[i + 1]);
 				cpack.get_language().set_name(argv[i + 1]);
 				i++;
 			}

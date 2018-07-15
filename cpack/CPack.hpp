@@ -29,15 +29,10 @@ public:
 	const std::string get_header_data()
 	{
 		return lang[Header];
-		/*return std::string("#ifndef ") +
-			to_upper(header_name) +
-			"\n\n";*/
-		//return "#ifndef CPACK_BINARY_FILES\n#define CPACK_BINARY_FILES\n\n";
 	}
 	const std::string get_footer_data()
 	{
 		return lang[Footer];
-		//return "// end of cpack header\n\n#endif\n";
 	}
 	std::string bytes_to_source(File_Struct& file);
 public:
