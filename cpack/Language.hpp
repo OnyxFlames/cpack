@@ -55,5 +55,6 @@ public:
 	std::string operator[](LanguageSection sect);
 	bool set_language(LanguageName lang);
 	void set_name(const std::string _name);
+	std::string generate_entry(const std::string name, const size_t size);
 };
 

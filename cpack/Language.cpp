@@ -96,3 +96,8 @@ void Language::set_name(const std::string _name)
 	// Update language values
 	set_language(current_language);
 }
+
+std::string Language::generate_entry(const std::string name, const size_t size)
+{
+	return std::string();
+}
