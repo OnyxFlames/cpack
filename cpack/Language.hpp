@@ -54,6 +54,7 @@ private:
 public:
 	Language();
 	~Language();
+	LanguageName& get_language() { return current_language; }
 	std::string operator[](LanguageSection sect);
 	bool set_language(LanguageName lang);
 	void set_name(const std::string _name);

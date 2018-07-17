@@ -66,7 +66,7 @@ bool Language::set_language(LanguageName lang)
 		casttype = "(char)";
 		comment_start = "/*";
 		comment_end = "*/";
-		stringtype = "char[] ";
+		stringtype = "char ";
 		sizetype = "const unsigned long ";
 		break;
 	case CSharp:
