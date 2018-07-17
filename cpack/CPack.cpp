@@ -61,7 +61,8 @@ std::string CPack::bytes_to_source(File_Struct& file)
 	std::stringstream ret;
 
 	ret << lang[StringType] << filename_to_sourcename(file.filename) << "_name = \"" << fs::path(file.filename).filename().string() << "\";\n";
-	ret << lang[StorageType] << filename_to_sourcename(file.filename) << "_contents[" << file.contents.size() << "] = \n{";
+	ret << lang.generate_entry(filename_to_sourcename(file.filename), file.contents.size()) << "\n";
+	// ret << lang[StorageType] << filename_to_sourcename(file.filename) << "_contents[" << file.contents.size() << "] = \n{";
 
 	for (size_t i = 0; i < file.contents.size(); i++)
 	{
@@ -76,7 +77,7 @@ std::string CPack::bytes_to_source(File_Struct& file)
 			 ret << ", ";
 	}
 	ret << "\n};\n";
-	ret << std::dec << "const unsigned long " << filename_to_sourcename(file.filename) << "_size = " << file.contents.size() << ";\n";
+	ret << std::dec << lang[SizeType] << filename_to_sourcename(file.filename) << "_size = " << file.contents.size() << ";\n";
 
 	return ret.str();
 }

@@ -1,5 +1,6 @@
 #include "Language.hpp"
 
+#include <sstream>
 
 std::string& to_upper(std::string& str)
 {
@@ -39,6 +40,8 @@ std::string Language::operator[](LanguageSection sect)
 		return comment_start;
 	case CommentEnd:
 		return comment_end;
+	case SizeType:
+		return sizetype;
 	default:
 		return "Unknown";
 	}
@@ -64,16 +67,18 @@ bool Language::set_language(LanguageName lang)
 		comment_start = "/*";
 		comment_end = "*/";
 		stringtype = "char[] ";
+		sizetype = "const unsigned long ";
 		break;
 	case CSharp:
 		header = "namespace " + header_name + "\n{\nclass Storage\n{\n";
 		body = "";
 		footer = "}\n}\n";
-		storagetype = "public static fixed char[] ";
-		casttype = "";
+		storagetype = "public static char[";
+		casttype = "(char) ";
 		comment_start = "/*";
 		comment_end = "*/";
 		stringtype = "string ";
+		sizetype = "public const long ";
 		break;
 	default:
 		std::cout << "Language not supported.\n";
@@ -99,5 +104,22 @@ void Language::set_name(const std::string _name)
 
 std::string Language::generate_entry(const std::string name, const size_t size)
 {
-	return std::string();
+	// formats how a variable entry is emitted.
+	std::stringstream ss;
+
+	switch (current_language)
+	{
+	case C:
+	case CPP:
+		ss << this->operator[](StorageType) << " " << name << "_contents[" << size << "] = \n{";
+		break;
+	case CSharp:
+		ss << this->operator[](StorageType) << "] file_" << name
+			<< "_contents = new char[" << size << "] {";
+		break;
+	}
+
+
+
+	return ss.str();
 }

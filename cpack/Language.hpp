@@ -24,6 +24,7 @@ enum LanguageSection
 	StorageType,
 	CastType,
 	StringType,
+	SizeType,
 	CommentStart,
 	CommentEnd,
 };
@@ -48,6 +49,7 @@ private:
 	std::string casttype = "";
 	std::string stringtype = "";
 	std::string comment_start, comment_end;
+	std::string sizetype;
 	LanguageName current_language = UnknownName;
 public:
 	Language();
